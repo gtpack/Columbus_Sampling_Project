@@ -7,5 +7,6 @@ urlpatterns = [
     path('admin-for-site-oaw52hjfpoq234tebgv89sdv351624122', admin.site.urls),
     path('simple_sampling/', load_page),
     path('simple_sampling/run_sample/', run_sample),
+    path('home/', home, name='home'),
     path('', home, name='home')
 ]
