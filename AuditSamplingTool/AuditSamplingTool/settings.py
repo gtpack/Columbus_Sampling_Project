@@ -1,5 +1,7 @@
 from pathlib import Path
 import os
+import django_heroku
+import dj_database_url
 from decouple import config
 
 
@@ -42,6 +44,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'AuditSamplingTool.urls'
@@ -114,7 +117,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 CRISPY_ALLOWED_TEMPLATE_PACK="materialize_ccs_forms"
 
 LOGIN_REDIRECT_URL="/home"
 LOGOUT_REDIRECT_URL="/home"
+
+django_heroku.settings(locals())
